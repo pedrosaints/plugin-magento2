@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1000" translate="label">
+            <group id="fixpay" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label">
+                <label>Fix Pay Checkout</label>
+                <field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label"
+                       type="select">
+                    <label>Ativar/Desativar</label>
+                    <source_model>Magento\Fixpay\Model\Simnao</source_model>
+                    <comment><![CDATA[Ativar o Fix Pay Checkout]]></comment>
+                    <config_path>payment/fixpay/active</config_path>
+                </field>
+                <group id="fixpay_credentials" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="5" translate="label">
+                    <label>Credenciais</label>
+                    <comment><![CDATA[Token relativo a sua conta Fix Pay, entre em contato para recebê-lo. (<a href="https://app.pipefy.com/public/form/SyyPPEqr?emb=check">Não possui conta?</a>)]]></comment>
+                    <field id="fixpay_token" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="6" translate="label"
+                           type="text">
+                        <label>Token</label>
+                        <sort_order>5</sort_order>
+                        <comment><![CDATA[Token relativo a sua conta Fix Pay.]]></comment>
+                    </field>
+                </group>
+                <group id="fixpay_payment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                    <label>Configurações do Checkout</label>
+                    <comment><![CDATA[Configurações básicas para o pagamento.]]></comment>
+                    <field id="fixpay_brand" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="12" translate="label"
+                           type="text">
+                        <label>Nome da Marca/Loja</label>
+                        <comment><![CDATA[Nome da Marca/Loja que vai aparecer no checkout Fix Pay.]]></comment>
+                    </field>
+                    <field id="fixpay_maxparcela" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="14" translate="label"
+                           type="select">
+                        <label>Máximo de Parcelas s/ Juros</label>
+                        <source_model>Magento\Fixpay\Model\Months</source_model>
+                        <comment><![CDATA[Número máximo de parcelas sem juros repassados ao cliente.]]></comment>
+                    </field>
+                    <field id="fixpay_minparcela" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="16" translate="label"
+                           type="text">
+                        <label>Valor Mínimo da Parcela (R$)</label>
+                        <validate>validate-not-negative-number</validate>
+                        <comment><![CDATA[Valor mínimo permitido para cada parcela.]]></comment>
+                    </field>
+                </group>
+                <group id="fixpay_personal" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+                    <label>Personalização</label>
+                    <comment><![CDATA[Personalizações opcionais do checkout.]]></comment>
+                    <field id="fixpay_backgroundpers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="22" translate="label"
+                           type="select">
+                        <label>Background Personalizado</label>
+                        <source_model>Magento\Fixpay\Model\Simnao</source_model>
+                        <comment><![CDATA[Ativa um plano de fundo personalizado na tela de checkout.]]></comment>
+                    </field>
+                    <field id="fixpay_backgroundpersurl" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="24" translate="label"
+                           type="text">
+                        <label>URL da Imagem</label>
+                        <comment><![CDATA[Url da imagem de plano de fundo personalizado da tela de checkout (padrão: <a href="https://intranet.fixpay.com.br/images/link_pagamento_email/Camada48.png">https://intranet.fixpay.com.br/images/link_pagamento_email/Camada48.png</a>).]]></comment>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>
